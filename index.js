@@ -6,27 +6,37 @@
 
 var marked = require('marked'),
     fs = require('fs'),
-    m2odt = {},
+    md2odt = {},
     rules,
     parser;
 
 rules = {
-    space: ,
-    code: ,
-    heading: ,
-    table: ,
-    hr: ,
-    blockquote_start: ,
-    blockquote_end: ,
-    list_start: ,
-    loose_item_start: ,
-    list_item_start: ,
-    list_item_end: ,
-    list_end: ,
-    paragraph: ,
-    html: ,
-    text:
-}
+    // space: ,
+    // code: ,
+    heading: function(item) {
+        return '<text:h text:outline-level="' + item.depth + '">' +
+                item.text +
+                '</text:h>';
+    },
+    // table: ,
+    // hr: ,
+    // blockquote_start: ,
+    // blockquote_end: ,
+    // list_start: ,
+    // loose_item_start: ,
+    // list_item_start: ,
+    // list_item_end: ,
+    // list_end: ,
+    paragraph: function (item) {
+        return '<text:p></text:p>' + // empty line
+                rules.text(item) +
+                '<text:p></text:p>'; // empty line
+    },
+    // html: ,
+    text: function (item) {
+      return '<text:p>' + item.text + '</text:p>';
+    }
+};
 
 parse = function (src) {
     'use strict';
@@ -35,12 +45,18 @@ parse = function (src) {
         out = '';
 
     lexed.forEach(function (item) {
-
+        if (rules[item.type]) {
+            out += rules[item.type](item);
+        } else {
+            throw new Error("Markdown token not supported : " + item.type);
+        }
     });
+
+    return out;
 
 };
 
-m2odt.parse = parse;
-m2odt.rules = rules;
+md2odt.parse = parse;
+md2odt.rules = rules;
 
-module.exports = m2odt;
+module.exports = md2odt;
