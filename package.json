@@ -23,6 +23,7 @@
   "readmeFilename": "README.md",
   "gitHead": "561d41bb2fea7c7c9d8febad03c7863d1e3735fd",
   "devDependencies": {
-    "marked": "~0.2.8"
+    "marked": "~0.2.8",
+    "mocha": "~1.10.0"
   }
 }
