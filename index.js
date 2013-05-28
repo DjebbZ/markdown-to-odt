@@ -28,14 +28,12 @@ rules = {
     // list_item_end: ,
     // list_end: ,
     paragraph: function (item) {
-        return '<text:p></text:p>' + // empty line
-                rules.text(item) +
-                '<text:p></text:p>'; // empty line
+        return '<text:p>' + item.text + '</text:p>';
     },
     // html: ,
-    text: function (item) {
-      return '<text:p>' + item.text + '</text:p>';
-    }
+    // text: function (item) {
+    //   return '<text:p>' + item.text + '</text:p>';
+    // }
 };
 
 parse = function (src) {
