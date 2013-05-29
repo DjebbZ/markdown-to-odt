@@ -1,12 +1,13 @@
-markdown-to-odt
-===============
+markdown-to-odt, aka md2odt
+===========================
 
 Convert Markdown to Open Document Text
 
 ### Goals
 
-- Provide a tool to allow for writing Open Document Text files (.odt) using Markdown.
+- Provide a tool to allow for writing Open Document Text files (ODT) using Markdown.
 - Provide a library that works in Node.js, the browser and Require.js for maximum flexibility.
+- Produce ODT content that follow the [official ODF 1.2 specs](http://docs.oasis-open.org/office/v1.2/OpenDocument-v1.2.html) and pass the [ODF validator](http://opendocumentfellowship.com/validator).
 
 ### Why Markdown ?
 
@@ -14,7 +15,7 @@ Markdown is nice for writing formatted text as its syntax is simple and almost u
 
 ### Why plain text ?
 
-Plain text plays nicely with version control and allows edition by multiple people, whereas odt don't.
+Plain text plays nicely with version control and allows edition by multiple people, whereas ODT don't.
 
 ### Dependencies
 
